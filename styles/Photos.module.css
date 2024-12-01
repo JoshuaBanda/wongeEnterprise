@@ -1,0 +1,181 @@
+/* Slider container and image styles */
+.slidercontainer {
+    width: 100%;
+    overflow: hidden;
+    height: 95%;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 5px;
+    padding-top: 3%;
+    padding-bottom: 10px;
+}
+
+.slider-container {
+    display: flex; /* Allows images to be side by side */
+    position: relative; /* Allows for positioning of child elements */
+}
+
+.sliderimage {
+    object-fit: cover;
+    width: calc(100% - 5%); /* Leave space for the next image */
+    height: 100%;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    transition: transform 1s ease-in-out;
+    aspect-ratio: 10 / 5.5;
+}
+
+.nextImage {
+    object-fit: cover;
+    width: 20%; /* Width for the next image */
+    height: 90%;
+    position: absolute; /* Position it relative to imageWrapper */
+    left: 75%; /* Center it */
+    transform: translateX(-50%); /* Adjust centering */
+    border-top: 0px solid rgba(0, 0, 0, 0.5);
+    border-right: 0px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    border-left: 3px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 5px rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+}
+
+/* Define the squish animation */
+@keyframes squish {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slidercontainer {
+        max-width: 90%; /* Make it wider on mobile */
+    }
+
+    .sliderbutton {
+        font-size: 20px; /* Slightly smaller buttons */
+        padding: 8px 12px; /* Adjust padding */
+    }
+}
+
+/* Overlay styles (text and price on images) */
+.overlayContainer {
+    position: absolute;
+    bottom: 0px; /* Position at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: rgb(216, 216, 216); /* White text for contrast */
+    padding: 4px;
+    border-radius: 5px; /* Rounded corners */
+    z-index: 10; /* Ensure it appears above the image */
+    text-align: center; /* Centered text */
+}
+
+.overlayText {
+    font-size: 20px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the item name bold */
+}
+
+.overlayPrice {
+    font-size: 16px; /* Adjust font size for price */
+    margin-top: 5px; /* Space between name and price */
+}
+
+/* Image wrapper */
+.imageWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Ensures the nextImage doesn't overflow */
+}
+
+/* Cart icon styles */
+.carticon {
+    color: rgba(0, 0, 139);
+    font-size: 65px;
+    border: 1px solid rgba(0, 0, 0, 0.158);
+    padding: 20%;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* Send icon styles (invisible by default) */
+.sendicon {
+    color: rgb(255, 0, 140);
+    font-size: 30px;
+    display: none;
+}
+
+/* Modal styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: rgba(255, 255, 255);
+    padding: 0px;
+    border-radius: 8px;
+    max-width: 250px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    color: rgb(65, 64, 64);
+}
+
+.modalImage {
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.modalAddToCartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #cecece;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modalAddToCartButton:hover {
+    background-color: rgba(255, 60, 89, 1);
+}
+
+/* Close button for modal (using icon) */
+.modalCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: rgba(255, 60, 89, 1);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modalCloseButton:hover {
+    color: rgba(255,255,255);
+}
